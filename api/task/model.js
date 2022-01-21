@@ -9,6 +9,17 @@ async function getAll() {
     return rows
 }
 
+function add(task) {
+    return db('tasks')
+        .insert(task)
+        .then(([id]) => {
+            return db('tasks')
+            .where('task_id', id)
+            .first()
+        })
+}
+
 module.exports = {
-    getAll
+    getAll,
+    add
 }
