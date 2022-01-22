@@ -6,9 +6,9 @@ router.get('/', async (req, res, next) => {
     try {
         const projects = await Project.getAll()
             if (projects.project_completed === 0) {
-                    res.json(projects).stringify({project_completed: false})
+                    res.json(projects)
             } else {
-                res.json(projects).stringify({project_completed: true})
+                res.json(projects)
             }
     } catch (err) {
         next(err)
